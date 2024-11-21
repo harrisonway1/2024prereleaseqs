@@ -1,0 +1,25 @@
+1. When generating new numbers, make it twice as likely for the number to be even as odd. 
+
+2. When a target is successfully obtained which is a prime number, score a bonus 5 points.
+
+3. Include an option to rearrange the targets to be in numerical order - this costs 20 points to do.
+
+4. Fix the code(specifically the allowing of inputting numbers, and not having it allow any number greater than 10)
+
+5. Add brackets for PEMDAS functionality
+
+6. Allowing negative numbers in calculations and allow negative numbers in numbers allowed
+
+7. Allow user to end game
+
+8. Make a way to win the game
+
+9. Additional points for eliminating multiple numbers
+
+10. For number from 2 to 50, if a square number, extra 2 points, if cube number 3 points, etc. 
+
+11. Add an option for if you have no numbers to use(maybe 3 refreshes of your numbers, like powerups - you get a refresh every 15 you get)
+
+12. Additional points for using a higher % of provided numbers
+
+13. Make the program allow for spaces in between characters in the expression
