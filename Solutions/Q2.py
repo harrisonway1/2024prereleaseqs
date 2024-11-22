@@ -57,10 +57,25 @@ def CheckIfUserInputEvaluationIsATarget(Targets, UserInputInRPN, Score):
     if UserInputEvaluation != -1:
         for Count in range(0, len(Targets)):
             if Targets[Count] == UserInputEvaluation:
-                Score += 2
+                if isPrime(Targets[Count]):
+                    Score += 6
+                else:
+                    Score += 2
                 Targets[Count] = -1
                 UserInputEvaluationIsATarget = True        
     return UserInputEvaluationIsATarget, Score
+
+def isPrime(number):
+    if number < 2:
+        return False
+    if number == 2:
+        return True
+    for i in range(2, math.ceil(number ** 0.5 + 1)):
+        if number % i == 0:
+            return False
+    return True
+
+print(isPrime(2))
     
 def RemoveNumbersUsed(UserInput, MaxNumber, NumbersAllowed):
     UserInputInRPN = ConvertToRPN(UserInput)
@@ -201,21 +216,11 @@ def CheckIfUserInputValid(UserInput):
     else:
         return False
 
-# New function to generate random numbers between 0 and Max
-def generate_number(Max):
-    even = [x for x in range(2, Max + 1, 2)]
-    odd = [x for x in range(1, Max + 1, 2)]
-    Chance = random.randint(1,3)
-    if Chance < 2:
-        return random.choice(odd)
-    return random.choice(even)
-
-# Changed GetTarget and GetNumber to call generate_number function
 def GetTarget(MaxTarget):
-    return generate_number(MaxTarget)
+    return random.randint(1, MaxTarget)
     
 def GetNumber(MaxNumber):
-    return generate_number(MaxNumber)
+    return random.randint(1, MaxNumber)   
 
 def CreateTargets(SizeOfTargets, MaxTarget):
     Targets = []

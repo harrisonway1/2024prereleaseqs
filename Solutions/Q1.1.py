@@ -201,21 +201,11 @@ def CheckIfUserInputValid(UserInput):
     else:
         return False
 
-# New function to generate random numbers between 0 and Max
-def generate_number(Max):
-    even = [x for x in range(2, Max + 1, 2)]
-    odd = [x for x in range(1, Max + 1, 2)]
-    Chance = random.randint(1,3)
-    if Chance < 2:
-        return random.choice(odd)
-    return random.choice(even)
-
-# Changed GetTarget and GetNumber to call generate_number function
 def GetTarget(MaxTarget):
-    return generate_number(MaxTarget)
+    return random.randint(1, MaxTarget)
     
 def GetNumber(MaxNumber):
-    return generate_number(MaxNumber)
+    return random.randint(1, MaxNumber)   
 
 def CreateTargets(SizeOfTargets, MaxTarget):
     Targets = []
@@ -230,7 +220,14 @@ def FillNumbers(NumbersAllowed, TrainingGame, MaxNumber):
         return [2, 3, 2, 8, 512]
     else:
         while len(NumbersAllowed) < 5:
-            NumbersAllowed.append(GetNumber(MaxNumber))      
+            chance = random.randint(1,3)
+            number = GetNumber(MaxNumber)
+            if chance < 2 and number % 2 == 0 or chance > 1 and number % 2 != 0:
+                if number + 1 > MaxNumber:
+                    number -= 1
+                else:
+                    number += 1
+            NumbersAllowed.append(number)      
         return NumbersAllowed
 
 if __name__ == "__main__":
