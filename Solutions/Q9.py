@@ -56,8 +56,10 @@ def CheckIfUserInputEvaluationIsATarget(Targets, UserInputInRPN, Score):
     UserInputEvaluationIsATarget = False
     if UserInputEvaluation != -1:
         for Count in range(0, len(Targets)):
+            points = 2
             if Targets[Count] == UserInputEvaluation:
-                Score += 2
+                Score += points
+                points += 1
                 Targets[Count] = -1
                 UserInputEvaluationIsATarget = True        
     return UserInputEvaluationIsATarget, Score
